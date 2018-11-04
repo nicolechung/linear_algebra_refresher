@@ -48,6 +48,8 @@ class Vector(object):
 
     def normalized(self):
         try:
+            # Note: need to convert magnitude to a decimal for this
+            # to work (video omits this)
             magnitude = Decimal(self.magnitude())
             return self.times_scalar(Decimal('1')/magnitude)
 

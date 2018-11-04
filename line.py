@@ -121,6 +121,7 @@ class Line(object):
 
         n = self.normal_vector
 
+        # Note: code is wrong in the video, you need n.coordinates not just n
         try:
             initial_index = Line.first_nonzero_index(n.coordinates)
             terms = [write_coefficient(n.coordinates[i], is_initial_term=(i==initial_index)) + 'x_{}'.format(i+1)
