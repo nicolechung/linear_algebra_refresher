@@ -64,6 +64,13 @@ class Vector(object):
         try:
             u1 = self.normalized()
             u2 = v.normalized()
+
+            # acos seems to fail when coordinates are paralle, this is a workaround
+            test_parallel = [x == y for x,y in zip(u1.coordinates, u2.coordinates)]
+            result = sum(test_parallel)
+            if result == len(u1.coordinates):
+                return 0
+
             angle_in_radians = acos(u1.dot(u2))
             if in_degrees:
                 degrees_per_radian = 180./ pi
